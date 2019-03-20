@@ -20,7 +20,7 @@ if (window.PaymentRequest) {
 
     const paymentRequest = new PaymentRequest(supportedPaymentMethods, paymentDetails, options);
 
-    document.getElementById('paynow').addEventListener(e => {
+    document.getElementById('paynow').addEventListener('click', e => {
         paymentRequest.show()
           .then(payment => console.log(payment))
           .catch(error => console.error(error));
