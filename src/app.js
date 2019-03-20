@@ -28,7 +28,7 @@ if (window.PaymentRequest) {
         // paymentResponse.details contains a payment method specific response
         await response.complete("success");
       } catch (err) {
-        console.error("Uh oh, something bad happened", err.message);
+        alert("Error:", err.message);
       }
     };
     
