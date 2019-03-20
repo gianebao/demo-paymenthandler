@@ -18,13 +18,19 @@ if (window.PaymentRequest) {
 
     const options = {}
 
-    const paymentRequest = new PaymentRequest(supportedPaymentMethods, paymentDetails, options);
-
-    document.getElementById('paynow').addEventListener('click', e => {
-        paymentRequest.show()
-          .then(payment => console.log(payment))
-          .catch(error => console.error(error));
-    });
+    document.getElementById('paynow').onclick = async function handlePurchase() {
+      const paymentRequest = new PaymentRequest(supportedPaymentMethods, paymentDetails, options);
+      try {
+        const response = await paymentRequest.show();
+        // Process response here, including sending payment instrument
+        // (e.g., credit card) information to the server.
+        // paymentResponse.methodName contains the selected payment method
+        // paymentResponse.details contains a payment method specific response
+        await response.complete("success");
+      } catch (err) {
+        console.error("Uh oh, something bad happened", err.message);
+      }
+    };
     
 }
 else {
