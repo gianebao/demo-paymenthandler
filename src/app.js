@@ -20,9 +20,10 @@ if (window.PaymentRequest) {
 
     const paymentRequest = new PaymentRequest(supportedPaymentMethods, paymentDetails, options);
 
-    paymentRequest.show()
-    .then(payment => console.log(payment))
-    .catch(error => console.error(error));
+    document.getElementById('paynow').addEventListener(e => paymentRequest.show()
+      .then(payment => console.log(payment))
+      .catch(error => console.error(error)));
+    
 }
 else {
     alert('PaymentRequest API not supported.');
