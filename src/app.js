@@ -20,9 +20,11 @@ if (window.PaymentRequest) {
 
     const paymentRequest = new PaymentRequest(supportedPaymentMethods, paymentDetails, options);
 
-    document.getElementById('paynow').addEventListener(e => paymentRequest.show()
-      .then(payment => console.log(payment))
-      .catch(error => console.error(error)));
+    document.getElementById('paynow').addEventListener(e => {
+        paymentRequest.show()
+          .then(payment => console.log(payment))
+          .catch(error => console.error(error));
+    });
     
 }
 else {
